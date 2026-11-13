@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slow Parker 2099 — Miguel O'Hara Edition | Flyer Técnico Digital</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            comic: ['Bangers', 'cursive'],
+          },
+          colors: {
+            miguelDark: '#070B19',
+            miguelNavy: '#0D152D',
+            miguelBlue: '#1D4ED8',
+            miguelCyan: '#00F0FF',
+            miguelCrimson: '#FF1744',
+            miguelYellow: '#FACC15',
+            slothMoss: '#10B981',
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="cyber-web-bg font-sans antialiased selection:bg-miguelCrimson selection:text-white transition-colors duration-300">
+
+  <!-- TOP MINIMALIST FLYER HEADER / NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#070B19]/90 border-b border-slate-200 dark:border-slate-800/90">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand Identity: Miguel O'Hara 2099 Skull-Web + SlothClaw -->
+      <a href="#apresentacao" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-miguelNavy border border-miguelCrimson/60 text-miguelCrimson flex items-center justify-center relative overflow-hidden shadow-sm group-hover:border-miguelCyan transition-colors">
+          <!-- Minimalist 2099 Spider-Skull + Sloth Emblem SVG -->
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3L17 8L15 15L12 19L9 15L7 8L12 3Z" stroke="#FF1744" stroke-width="1.8" fill="rgba(255,23,68,0.15)"/>
+            <path d="M7 8L3 4M17 8L21 4M7 11L2 11M17 11L22 11M8 14L4 19M16 14L20 19" stroke="#FF1744" stroke-width="1.6" stroke-linecap="round"/>
+            <polygon points="9.5,9.5 11.5,10.5 9.5,11.5" fill="#00F0FF"/>
+            <polygon points="14.5,9.5 12.5,10.5 14.5,11.5" fill="#00F0FF"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-bold tracking-tight text-lg text-slate-900 dark:text-white">SLOW PARKER <span class="text-miguelCrimson">2099</span></span>
+            <span class="text-[10px] font-mono font-semibold uppercase tracking-widest px-2 py-0.5 rounded bg-miguelCrimson/15 text-miguelCrimson border border-miguelCrimson/30">MIGUEL O'HARA</span>
+          </div>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">Rope Climbing Monkey • Bicho-Preguiça Aranha 2099</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#apresentacao" class="hover:text-miguelCrimson transition-colors">Apresentação</a>
+        <a href="#onomatopeias" class="hover:text-miguelCrimson transition-colors">Quadrinhos 2099</a>
+        <a href="#especificacoes" class="hover:text-miguelCrimson transition-colors">Ficha Técnica</a>
+        <a href="#antes-depois" class="hover:text-miguelCrimson transition-colors">Antes & Depois</a>
+        <a href="#equipe" class="hover:text-miguelCrimson transition-colors">Equipe (5)</a>
+      </nav>
+
+      <!-- Interactive Flyer Controls -->
+      <div class="flex items-center gap-2 no-print">
+        <button id="toggleEditBtn" type="button" class="text-xs font-medium px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-miguelCrimson dark:hover:border-miguelCrimson text-slate-700 dark:text-slate-200 flex items-center gap-1.5 transition-all" title="Editar todos os campos 'input text here'">
+          <span id="editDot" class="w-2 h-2 rounded-full bg-slate-400"></span>
+          <span id="editBtnLabel">Editar "input text here"</span>
+        </button>
+
+        <button id="toggleThemeBtn" type="button" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Alternar tema">
+          <svg id="sunIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="moonIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button id="mobileMenuBtn" type="button" class="md:hidden p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200" aria-label="Abrir menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Collapsible Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#070B19] px-4 pt-2 pb-4 space-y-1">
+      <a href="#apresentacao" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-miguelCrimson">Apresentação</a>
+      <a href="#onomatopeias" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-miguelCrimson">Onomatopeias em Quadrinho</a>
+      <a href="#especificacoes" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-miguelCrimson">Ficha Técnica Completa</a>
+      <a href="#antes-depois" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-miguelCrimson">Galeria Antes & Depois</a>
+      <a href="#equipe" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-miguelCrimson">Integrantes da Equipe (5)</a>
+    </div>
+  </header>
+
+  <!-- Edit Mode Notification Banner -->
+  <div id="editBanner" class="hidden bg-miguelCrimson text-white text-xs py-2 px-4 text-center no-print">
+    <span>Modo Edição Ativo: Clique em qualquer espaço <strong>"input text here"</strong> para digitar o conteúdo diretamente no flyer.</span>
+    <button id="resetTextBtn" type="button" class="ml-3 underline font-semibold hover:text-miguelYellow">Restaurar "input text here"</button>
+  </div>
+
+  <!-- MAIN DIGITAL FLYER CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-14">
+
+    <!-- 1. HERO FLYER SECTION: MIGUEL O'HARA / SPIDER-MAN 2099 × BICHO-PREGUIÇA -->
+    <section id="apresentacao" class="relative rounded-3xl bg-white dark:bg-[#0D152D] border-2 border-slate-200 dark:border-miguelCrimson/40 shadow-xl overflow-hidden p-6 sm:p-10 lg:p-12">
+      <!-- Minimalist Spider-Man 2099 Laser Web Corner Accent -->
+      <svg class="absolute -top-10 -right-10 w-72 h-72 text-miguelCrimson/15 pointer-events-none" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2">
+        <polygon points="200,0 120,40 160,120"/>
+        <polygon points="200,0 60,70 130,170"/>
+        <polygon points="200,0 10,100 90,195"/>
+        <line x1="200" y1="0" x2="0" y2="200" stroke="#00F0FF" stroke-opacity="0.25"/>
+      </svg>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
+        <!-- Left Column: Presentation & Concept -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-[#070B19] border border-miguelCrimson/40">
+            <span class="w-2 h-2 rounded-full bg-miguelCrimson animate-pulse"></span>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-miguelCrimson">ROPE CLIMBING MONKEY ROBOT</span>
+            <span class="text-slate-400">•</span>
+            <span class="text-xs font-mono font-semibold text-miguelCyan">NUEVA YORK 2099 × PREGUIÇA</span>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex flex-wrap items-center gap-3">
+              <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
+                SLOW <span class="text-miguelCrimson">PARKER</span>
+              </h1>
+              <!-- Comic Book Burst Badge -->
+              <span class="font-comic text-2xl sm:text-3xl tracking-wider px-3 py-1 bg-miguelYellow text-miguelDark rounded-lg -rotate-3 comic-shadow-crimson">
+                2099 EDITION!
+              </span>
+            </div>
+            <p class="text-base sm:text-lg font-medium text-slate-600 dark:text-slate-300 pt-1">
+              O bicho-preguiça robótico com o traje futurista de <strong class="text-miguelCrimson dark:text-miguelCyan">Miguel O'Hara (Homem-Aranha 2099)</strong> e garras de escalada na corda.
+            </p>
+          </div>
+
+          <!-- Primary Presentation Slot ("input text here") -->
+          <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19]/90 border-l-4 border-miguelCrimson space-y-1.5">
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-miguelCrimson dark:text-miguelCyan block">
+              // APRESENTAÇÃO DO PROJETO (EVENTO DO CÂNONE)
+            </span>
+            <p class="editable-slot text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed">input text here</p>
+          </div>
+
+          <!-- 3 Concept Pillars with "input text here" -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-[#070B19]/80 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs font-mono font-bold text-miguelCrimson uppercase block mb-1">01 • Rope Climbing</span>
+              <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-[#070B19]/80 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs font-mono font-bold text-slothMoss uppercase block mb-1">02 • Bio-Preguiça</span>
+              <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-[#070B19]/80 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs font-mono font-bold text-miguelCyan uppercase block mb-1">03 • Miguel O'Hara</span>
+              <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3 pt-1 no-print">
+            <a href="#especificacoes" class="px-5 py-2.5 rounded-xl bg-miguelCrimson hover:bg-red-600 text-white font-semibold text-sm shadow-sm transition-all">
+              Ver Especificações Técnicas
+            </a>
+            <a href="#antes-depois" class="px-5 py-2.5 rounded-xl bg-slate-900 dark:bg-miguelBlue hover:opacity-90 text-white font-semibold text-sm transition-all">
+              Fotos: Antes & Depois
+            </a>
+            <button id="printFlyerBtn" type="button" class="px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium transition-all">
+              Imprimir Flyer
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Minimalist Vector Crest & Comic Onomatopoeia Poster Card (NO AI Images) -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl bg-[#070B19] text-white p-6 border-2 border-miguelCrimson/60 comic-shadow-crimson overflow-hidden">
+            <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
+
+            <!-- Top Comic Header -->
+            <div class="relative z-10 flex items-center justify-between text-[11px] font-mono text-miguelCyan border-b border-slate-800 pb-3">
+              <span>SPIDER-SLOTH // EARTH-928</span>
+              <span class="px-2 py-0.5 rounded bg-miguelCrimson text-white font-bold">CÓD. 2099</span>
+            </div>
+
+            <!-- Pure Vector Illustration: Spider-Man 2099 Sloth Climbing Rope with Comic Onomatopoeia -->
+            <div class="relative z-10 my-4 flex flex-col items-center justify-center">
+              <!-- Floating Comic Onomatopoeia Top Left -->
+              <div class="self-start -rotate-6 mb-1">
+                <div class="inline-block bg-miguelYellow text-miguelDark font-comic text-xl sm:text-2xl px-3 py-0.5 rounded border-2 border-miguelDark comic-shadow-crimson">
+                  THWIP-SLOOOOW!!
+                </div>
+              </div>
+
+              <!-- Minimalist Vector Art of Miguel O'Hara Sloth on Rope -->
+              <svg class="w-56 h-56" viewBox="0 0 220 220" fill="none">
+                <!-- Glowing Cyan Laser Web Rope -->
+                <line x1="110" y1="5" x2="110" y2="215" stroke="#00F0FF" stroke-width="5" stroke-dasharray="10 4"/>
+                <line x1="110" y1="5" x2="110" y2="215" stroke="#FF1744" stroke-width="2"/>
+
+                <!-- 2099 Crimson Web Cape / Sloth Back -->
+                <path d="M128 75 C165 85, 175 125, 150 155 C140 135, 135 115, 125 105 Z" fill="rgba(255,23,68,0.3)" stroke="#FF1744" stroke-width="1.5"/>
+
+                <!-- Miguel O'Hara Navy Body Chassis (14x8x5cm proportion reference) -->
+                <rect x="82" y="74" width="56" height="76" rx="18" fill="#0D152D" stroke="#00F0FF" stroke-width="2.5"/>
+
+                <!-- 2099 Crimson Skull-Spider Crest on Chest -->
+                <path d="M110 88 L124 102 L118 124 L110 132 L102 124 L96 102 Z" fill="#FF1744"/>
+                <!-- Skull Eyes on Chest -->
+                <polygon points="103,104 108,107 103,110" fill="#070B19"/>
+                <polygon points="117,104 112,107 117,110" fill="#070B19"/>
+                <!-- Spider-2099 Chest Webbing Lines -->
+                <path d="M96 102 L72 86 M124 102 L148 86 M98 114 L70 114 M122 114 L150 114 M102 124 L76 144 M118 124 L144 144" stroke="#FF1744" stroke-width="3" stroke-linecap="round"/>
+
+                <!-- Sloth Arms + Forearm Talons Gripping Rope -->
+                <path d="M84 85 Q65 62 106 48" stroke="#0D152D" stroke-width="12" stroke-linecap="round"/>
+                <path d="M84 85 Q65 62 106 48" stroke="#FF1744" stroke-width="3" stroke-linecap="round"/>
+                <!-- 3 Sloth Claws (Miguel Talons) -->
+                <path d="M104 42 L117 44 M104 47 L117 49 M104 52 L117 54" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
+
+                <!-- Sloth Head with 2099 Mask & Cute Sloth Snout -->
+                <circle cx="110" cy="54" r="20" fill="#0D152D" stroke="#FF1744" stroke-width="2.5"/>
+                <!-- Sloth Facial Mask Contour -->
+                <ellipse cx="110" cy="57" rx="13" ry="9" fill="#1E293B"/>
+                <!-- Angular 2099 Crimson Eye Lenses -->
+                <polygon points="96,52 107,48 105,56" fill="#FF1744"/>
+                <polygon points="124,52 113,48 115,56" fill="#FF1744"/>
+                <!-- Sloth Nose & Calm Smile -->
+                <ellipse cx="110" cy="58" rx="3" ry="2" fill="#00F0FF"/>
+                <path d="M105 62 Q110 65 115 62" stroke="#F8FAFC" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+
+              <!-- Floating Comic Onomatopoeia Bottom Right -->
+              <div class="self-end rotate-3 -mt-2">
+                <div class="inline-block bg-miguelCrimson text-white font-comic text-xl sm:text-2xl px-3.5 py-0.5 rounded border-2 border-white comic-shadow-cyan">
+                  KRAKOOM-CLIMB!
+                </div>
+              </div>
+            </div>
+
+            <!-- Comic Caption Box -->
+            <div class="relative z-10 mt-3 p-3 rounded-xl bg-[#0D152D] border border-miguelCyan/40 text-xs">
+              <span class="font-mono font-bold text-miguelYellow uppercase block">LEGENDA DO QUADRINHO:</span>
+              <p class="editable-slot text-slate-200 mt-0.5">input text here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. COMIC BOOK ONOMATOPEIA & SPECIAL PHRASES SECTION (INSTEAD OF SIMULATORS) -->
+    <section id="onomatopeias" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-miguelCrimson">// ARTE DE QUADRINHOS • SPIDER-VERSE 2099</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+            Onomatopeias & Frases Especiais do Slow Parker
+          </h2>
+        </div>
+        <p class="editable-slot text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md">input text here</p>
+      </div>
+
+      <!-- 3 Comic Panels with Custom SVG Onomatopoeia Art -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Comic Panel 1: THWIP-SLOOOOW! -->
+        <div class="relative rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-slate-900 dark:border-miguelCrimson p-6 comic-shadow-crimson overflow-hidden flex flex-col justify-between">
+          <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
+          <div class="relative z-10 space-y-4">
+            <!-- SVG Comic Burst Onomatopoeia -->
+            <div class="h-32 flex items-center justify-center">
+              <svg class="w-full h-full max-w-[250px]" viewBox="0 0 260 110">
+                <polygon points="10,55 42,20 75,32 115,6 148,28 195,10 212,42 252,52 215,78 232,104 175,92 135,108 102,88 48,102 58,72" fill="#FACC15" stroke="#070B19" stroke-width="3.5"/>
+                <text x="130" y="64" text-anchor="middle" font-family="Bangers, cursive" font-size="30" fill="#FF1744" stroke="#070B19" stroke-width="1.5" letter-spacing="2">THWIP-SLOOOOW!</text>
+              </svg>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-100 dark:bg-[#070B19]/90 border-l-4 border-miguelYellow">
+              <p class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                "Subir na corda a 0,01 km/h não é atraso... é um Evento Canônico!"
+              </p>
+            </div>
+            <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+          </div>
+          <div class="relative z-10 mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between text-[11px] font-mono text-miguelCrimson">
+            <span>GARRAS 2099</span>
+            <span>PASSO DE PREGUIÇA</span>
+          </div>
+        </div>
+
+        <!-- Comic Panel 2: ZZZT-47Ω ANTI-CHAMAS! -->
+        <div class="relative rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-slate-900 dark:border-miguelCyan p-6 comic-shadow-cyan overflow-hidden flex flex-col justify-between">
+          <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
+          <div class="relative z-10 space-y-4">
+            <!-- SVG Comic Burst Onomatopoeia -->
+            <div class="h-32 flex items-center justify-center">
+              <svg class="w-full h-full max-w-[250px]" viewBox="0 0 260 110">
+                <polygon points="15,30 65,12 95,30 140,8 175,28 240,15 222,55 250,85 188,82 155,105 115,82 60,102 42,70" fill="#00F0FF" stroke="#070B19" stroke-width="3.5"/>
+                <text x="130" y="62" text-anchor="middle" font-family="Bangers, cursive" font-size="28" fill="#070B19" letter-spacing="1.5">ZZZT-47Ω SAFE!!</text>
+              </svg>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-100 dark:bg-[#070B19]/90 border-l-4 border-miguelCyan">
+              <p class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                "Sem curto no multiverso! Resistores de 47 Ω 100% Anti-Chamas em ação!"
+              </p>
+            </div>
+            <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+          </div>
+          <div class="relative z-10 mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between text-[11px] font-mono text-miguelCyan">
+            <span>BANCO PARALELO</span>
+            <span>PROTEÇÃO TÉRMICA</span>
+          </div>
+        </div>
+
+        <!-- Comic Panel 3: KRAKOOM-TORQUE! -->
+        <div class="relative rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-slate-900 dark:border-miguelCrimson p-6 comic-shadow-crimson overflow-hidden flex flex-col justify-between">
+          <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
+          <div class="relative z-10 space-y-4">
+            <!-- SVG Comic Burst Onomatopoeia -->
+            <div class="h-32 flex items-center justify-center">
+              <svg class="w-full h-full max-w-[250px]" viewBox="0 0 260 110">
+                <polygon points="8,50 48,14 90,26 130,6 170,26 218,12 248,48 220,76 238,102 180,90 132,106 88,88 32,100 44,68" fill="#FF1744" stroke="#070B19" stroke-width="3.5"/>
+                <text x="130" y="63" text-anchor="middle" font-family="Bangers, cursive" font-size="28" fill="#FFFFFF" stroke="#070B19" stroke-width="1.5" letter-spacing="1.5">CLACK-40T-GEAR!</text>
+              </svg>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-100 dark:bg-[#070B19]/90 border-l-4 border-miguelCrimson">
+              <p class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                "Redução 20 dentes para 40 dentes: devagar na corda, mas com força aracnídea!"
+              </p>
+            </div>
+            <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+          </div>
+          <div class="relative z-10 mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between text-[11px] font-mono text-miguelYellow">
+            <span>MOTOR AMARELO 6V</span>
+            <span>RELAÇÃO 2:1</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. UPDATED TECHNICAL SPECIFICATIONS (FICHA TÉCNICA COMPLETA) -->
+    <section id="especificacoes" class="rounded-3xl bg-white dark:bg-[#0D152D] border-2 border-slate-200 dark:border-slate-800 p-6 sm:p-10 space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-miguelCyan">// HARDWARE & MECÂNICA DO ROBÔ</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+            Especificações Técnicas — Slow Parker 2099
+          </h2>
+        </div>
+        <div class="font-comic text-xl px-3 py-1 rounded bg-miguelCrimson text-white tracking-wider">
+          SPECS OFICIAIS!
+        </div>
+      </div>
+
+      <!-- Grid of 6 Detailed Spec Cards with Exact User Numbers -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Spec 1: Bateria & Alimentação -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19] border border-slate-200 dark:border-slate-800 hover:border-miguelCrimson transition-colors flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold uppercase text-miguelCrimson">01. Alimentação</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-miguelCrimson/15 text-miguelCrimson font-semibold">± 8V</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">Bateria ± 8V</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              Tensão de alimentação principal do barramento elétrico para acionamento do conjunto motriz.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas Adicionais:</span>
+            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          </div>
+        </div>
+
+        <!-- Spec 2: Banco de Resistores (Destaque Anti-Chamas) -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19] border-2 border-miguelCrimson/70 flex flex-col justify-between relative overflow-hidden">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold uppercase text-miguelYellow">02. Banco de Resistores</span>
+              <span class="text-[11px] font-comic tracking-wider px-2.5 py-0.5 rounded bg-miguelCrimson text-white">ANTI-CHAMAS!!!</span>
+            </div>
+            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">Associação em Paralelo</h3>
+            <ul class="text-xs sm:text-sm space-y-1.5 text-slate-700 dark:text-slate-200 pt-1">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-miguelCyan"></span>
+                <span><strong>4 resistores em paralelo</strong> de <strong>150 Ω</strong></span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-miguelCrimson"></span>
+                <span><strong>4 resistores em paralelo</strong> de <strong>47 Ω (anti-chamas!!!)</strong></span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-[10px] font-mono uppercase text-slate-400 block">Observações do Circuito:</span>
+            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          </div>
+        </div>
+
+        <!-- Spec 3: Motorização -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19] border border-slate-200 dark:border-slate-800 hover:border-miguelYellow transition-colors flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold uppercase text-miguelYellow">03. Atuador Principal</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-miguelYellow/20 text-miguelYellow font-semibold">DC 6V</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">Motor Amarelo 6V</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              Motor DC amarelo de 6V acoplado ao trem de engrenagens para tração dos membros na corda.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-[10px] font-mono uppercase text-slate-400 block">Detalhes de Acionamento:</span>
+            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          </div>
+        </div>
+
+        <!-- Spec 4: Engrenagens Maiores -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19] border border-slate-200 dark:border-slate-800 hover:border-miguelCyan transition-colors flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold uppercase text-miguelCyan">04. Transmissão • Coroa</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-miguelCyan/15 text-miguelCyan font-semibold">40 Dentes</span>
+            </div>
+            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">Engrenagens Maiores</h3>
+            <ul class="text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-200 font-mono pt-1">
+              <li>• Dentes: <strong>40 dentes</strong></li>
+              <li>• Diâmetro: <strong>53 mm</strong></li>
+              <li>• Espessura: <strong>5 mm</strong></li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas da Engrenagem Maior:</span>
+            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          </div>
+        </div>
+
+        <!-- Spec 5: Engrenagens Menores (Motor) -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19] border border-slate-200 dark:border-slate-800 hover:border-miguelCyan transition-colors flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold uppercase text-miguelCyan">05. Transmissão • Pinhão</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-miguelCyan/15 text-miguelCyan font-semibold">20 Dentes</span>
+            </div>
+            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">Engrenagens Menores (Motor)</h3>
+            <ul class="text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-200 font-mono pt-1">
+              <li>• Dentes: <strong>20 dentes</strong></li>
+              <li>• Diâmetro: <strong>27,60 mm</strong></li>
+              <li>• Espessura: <strong>5 mm</strong></li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas da Engrenagem do Motor:</span>
+            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          </div>
+        </div>
+
+        <!-- Spec 6: Dimensões do Corpo -->
+        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19] border border-slate-200 dark:border-slate-800 hover:border-slothMoss transition-colors flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold uppercase text-slothMoss">06. Estrutura MDF</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-slothMoss/15 text-slothMoss font-semibold">14 × 8 × 5 cm</span>
+            </div>
+            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">Dimensões do Corpo</h3>
+            <ul class="text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-200 font-mono pt-1">
+              <li>• Comprimento: <strong>14 cm</strong></li>
+              <li>• Altura: <strong>8 cm</strong></li>
+              <li>• Largura: <strong>5 cm</strong></li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas de Construção do Chassi:</span>
+            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. BEFORE & AFTER GALLERY (ANTES: FOTOS REAIS ENVIADAS | DEPOIS: ESPAÇOS PARA O ROBÔ DECORADO) -->
+    <section id="antes-depois" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-miguelCrimson">// EVOLUÇÃO DO PROTÓTIPO</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+            Galeria do Robô: Antes vs. Depois (Decorado 2099)
+          </h2>
+        </div>
+
+        <!-- Filter Buttons: Todos / Antes / Depois -->
+        <div class="flex flex-wrap gap-2 no-print">
+          <button type="button" data-stage="all" class="stage-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-miguelCrimson text-white transition-all">
+            Ver Antes + Depois
+          </button>
+          <button type="button" data-stage="antes" class="stage-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-miguelCyan transition-all">
+            1. Fase Antes (Estrutura & Eletrônica)
+          </button>
+          <button type="button" data-stage="depois" class="stage-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-miguelCrimson transition-all">
+            2. Fase Depois (Robô Decorado 2099)
+          </button>
+        </div>
+      </div>
+
+      <!-- ANTES BLOCK: 5 Real Photos Provided by the User -->
+      <div id="blockAntes" class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="font-comic text-xl px-3 py-0.5 rounded bg-miguelCyan text-miguelDark">FASE 01: ANTES!</span>
+            <h3 class="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+              Montagem Mecânica, Chassi MDF (14×8×5 cm), Engrenagens e Banco de Resistores
+            </h3>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Photo 1: Resistor Bank -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
+              <img
+                src="assets/antes-banco-resistores.jpg"
+                alt="Banco de resistores em paralelo: 4x 150 ohms e 4x 47 ohms anti-chamas"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-miguelCrimson text-white shadow">
+                ANTES • ELETRÔNICA
+              </span>
+            </div>
+            <div class="p-4 space-y-1.5">
+              <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                Banco de Resistores (4× 150 Ω + 4× 47 Ω Anti-Chamas)
+              </h4>
+              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
+            </div>
+          </div>
+
+          <!-- Photo 2: Top View Gears 1 -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
+              <img
+                src="assets/antes-engrenagens-topo-1.jpg"
+                alt="Vista interna superior do chassi com engrenagens e motor central"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-miguelBlue text-white shadow">
+                ANTES • TRANSMISSÃO INTERNA
+              </span>
+            </div>
+            <div class="p-4 space-y-1.5">
+              <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                Trem de Engrenagens (40 Dentes / 53 mm & 20 Dentes)
+              </h4>
+              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
+            </div>
+          </div>
+
+          <!-- Photo 3: Top View Gears 2 -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
+              <img
+                src="assets/antes-engrenagens-topo-2.jpg"
+                alt="Alinhamento dos eixos e engrenagens dentro do corpo de MDF"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-miguelBlue text-white shadow">
+                ANTES • ALINHAMENTO DE EIXOS
+              </span>
+            </div>
+            <div class="p-4 space-y-1.5">
+              <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                Acoplamento do Motor 6V e Eixos Passantes
+              </h4>
+              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
+            </div>
+          </div>
+
+          <!-- Photo 4: Side View Chassis 1 -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
+              <img
+                src="assets/antes-corpo-lateral-1.jpg"
+                alt="Vista lateral do corpo em MDF de 14cm x 8cm x 5cm"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-slate-800 text-miguelCyan shadow">
+                ANTES • CORPO 14×8×5 CM
+              </span>
+            </div>
+            <div class="p-4 space-y-1.5">
+              <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                Vista Lateral do Corpo (14 cm × 8 cm × 5 cm)
+              </h4>
+              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
+            </div>
+          </div>
+
+          <!-- Photo 5: Angled Side View Chassis 2 -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm flex flex-col justify-between sm:col-span-2 lg:col-span-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+              <div class="relative aspect-[4/3] md:aspect-auto bg-slate-950 overflow-hidden">
+                <img
+                  src="assets/antes-corpo-lateral-2.jpg"
+                  alt="Conjunto mecânico visto em ângulo mostrando dentes das engrenagens"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+                <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-slate-800 text-miguelCyan shadow">
+                  ANTES • ENCAIXE A LASER & ENGRENAGENS
+                </span>
+              </div>
+              <div class="p-5 flex flex-col justify-between">
+                <div class="space-y-2">
+                  <span class="text-xs font-mono font-bold text-miguelCrimson uppercase">Resumo da Fase "Antes"</span>
+                  <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">
+                    Protótipo Funcional Pré-Customização 2099
+                  </h4>
+                  <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">input text here</p>
+                </div>
+                <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span>CHASSI BASE PRONTO</span>
+                  <span>PRÓXIMO PASSO: TRAJE 2099</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DEPOIS BLOCK: Dedicated Slots for Decorated Robot Photos -->
+      <div id="blockDepois" class="space-y-4 pt-6">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="font-comic text-xl px-3 py-0.5 rounded bg-miguelCrimson text-white">FASE 02: DEPOIS!</span>
+            <h3 class="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+              Espaço Reservado: Fotos do Robô Decorado (Slow Parker / Miguel O'Hara 2099)
+            </h3>
+          </div>
+          <span class="text-xs font-mono text-miguelCyan">Clique para pré-visualizar suas fotos do "Depois" ou substitua na pasta assets/</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Depois Slot 1 -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-dashed border-miguelCrimson/60 p-4 flex flex-col justify-between">
+            <div class="relative aspect-[4/3] rounded-xl bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center p-4 text-center overflow-hidden">
+              <img id="afterPreview1" alt="Preview Depois 1" class="hidden w-full h-full object-cover rounded-lg" />
+              <div id="afterPlaceholder1" class="space-y-2">
+                <span class="font-comic text-2xl text-miguelCrimson block">POW-2099!!</span>
+                <p class="text-xs font-mono font-semibold text-slate-700 dark:text-slate-200">
+                  [ FOTO DEPOIS 01 — ROBÔ DECORADO FRENTE ]
+                </p>
+                <p class="text-[11px] text-slate-400">Arquivo sugerido: <code>assets/depois-01.jpg</code></p>
+                <label class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-miguelCrimson/15 text-miguelCrimson border border-miguelCrimson/40 text-xs font-semibold cursor-pointer hover:bg-miguelCrimson hover:text-white transition-colors no-print">
+                  Testar Foto Local
+                  <input type="file" accept="image/*" data-target="1" class="after-file-input hidden" />
+                </label>
+              </div>
+            </div>
+            <div class="pt-3 space-y-1">
+              <span class="text-[11px] font-mono font-bold text-miguelCrimson uppercase">Depois 01 • Visual Completo</span>
+              <p class="editable-slot text-xs text-slate-600 dark:text-slate-300">input text here</p>
+            </div>
+          </div>
+
+          <!-- Depois Slot 2 -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-dashed border-miguelCyan/60 p-4 flex flex-col justify-between">
+            <div class="relative aspect-[4/3] rounded-xl bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center p-4 text-center overflow-hidden">
+              <img id="afterPreview2" alt="Preview Depois 2" class="hidden w-full h-full object-cover rounded-lg" />
+              <div id="afterPlaceholder2" class="space-y-2">
+                <span class="font-comic text-2xl text-miguelCyan block">THWIP-GARRAS!!</span>
+                <p class="text-xs font-mono font-semibold text-slate-700 dark:text-slate-200">
+                  [ FOTO DEPOIS 02 — DETALHE TRAJE & GARRAS ]
+                </p>
+                <p class="text-[11px] text-slate-400">Arquivo sugerido: <code>assets/depois-02.jpg</code></p>
+                <label class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-miguelCyan/15 text-miguelCyan border border-miguelCyan/40 text-xs font-semibold cursor-pointer hover:bg-miguelCyan hover:text-miguelDark transition-colors no-print">
+                  Testar Foto Local
+                  <input type="file" accept="image/*" data-target="2" class="after-file-input hidden" />
+                </label>
+              </div>
+            </div>
+            <div class="pt-3 space-y-1">
+              <span class="text-[11px] font-mono font-bold text-miguelCyan uppercase">Depois 02 • Pintura & Fantasia</span>
+              <p class="editable-slot text-xs text-slate-600 dark:text-slate-300">input text here</p>
+            </div>
+          </div>
+
+          <!-- Depois Slot 3 -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-dashed border-miguelYellow/60 p-4 flex flex-col justify-between">
+            <div class="relative aspect-[4/3] rounded-xl bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center p-4 text-center overflow-hidden">
+              <img id="afterPreview3" alt="Preview Depois 3" class="hidden w-full h-full object-cover rounded-lg" />
+              <div id="afterPlaceholder3" class="space-y-2">
+                <span class="font-comic text-2xl text-miguelYellow block">CLIMB-2099!!</span>
+                <p class="text-xs font-mono font-semibold text-slate-700 dark:text-slate-200">
+                  [ FOTO DEPOIS 03 — SLOW PARKER NA CORDA ]
+                </p>
+                <p class="text-[11px] text-slate-400">Arquivo sugerido: <code>assets/depois-03.jpg</code></p>
+                <label class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-miguelYellow/15 text-miguelYellow border border-miguelYellow/40 text-xs font-semibold cursor-pointer hover:bg-miguelYellow hover:text-miguelDark transition-colors no-print">
+                  Testar Foto Local
+                  <input type="file" accept="image/*" data-target="3" class="after-file-input hidden" />
+                </label>
+              </div>
+            </div>
+            <div class="pt-3 space-y-1">
+              <span class="text-[11px] font-mono font-bold text-miguelYellow uppercase">Depois 03 • Escalando a Corda</span>
+              <p class="editable-slot text-xs text-slate-600 dark:text-slate-300">input text here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TEAM SECTION: SPACE FOR 5 MEMBERS (5 INTEGRANTES) -->
+    <section id="equipe" class="rounded-3xl bg-[#0D152D] text-white border-2 border-miguelCrimson/50 p-6 sm:p-10 space-y-8 relative overflow-hidden">
+      <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-miguelCyan">// SPIDER-SOCIETY 2099 • ENGENHARIA</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold mt-1">
+            Equipe do Projeto (5 Integrantes)
+          </h2>
+        </div>
+        <span class="font-comic text-xl tracking-wider px-3 py-0.5 rounded bg-miguelYellow text-miguelDark">
+          ESQUADRÃO SLOW PARKER!
+        </span>
+      </div>
+
+      <!-- 5 Member Cards with "input text here" -->
+      <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- Integrante 01 -->
+        <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelCrimson transition-colors space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono font-bold text-miguelCrimson">INTEGRANTE #01</span>
+            <span class="w-2 h-2 rounded-full bg-miguelCrimson"></span>
+          </div>
+          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
+          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
+          <p class="editable-slot text-xs text-slate-300">input text here</p>
+        </div>
+
+        <!-- Integrante 02 -->
+        <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelCyan transition-colors space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono font-bold text-miguelCyan">INTEGRANTE #02</span>
+            <span class="w-2 h-2 rounded-full bg-miguelCyan"></span>
+          </div>
+          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
+          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
+          <p class="editable-slot text-xs text-slate-300">input text here</p>
+        </div>
+
+        <!-- Integrante 03 -->
+        <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelYellow transition-colors space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono font-bold text-miguelYellow">INTEGRANTE #03</span>
+            <span class="w-2 h-2 rounded-full bg-miguelYellow"></span>
+          </div>
+          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
+          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
+          <p class="editable-slot text-xs text-slate-300">input text here</p>
+        </div>
+
+        <!-- Integrante 04 -->
+        <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-slothMoss transition-colors space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono font-bold text-slothMoss">INTEGRANTE #04</span>
+            <span class="w-2 h-2 rounded-full bg-slothMoss"></span>
+          </div>
+          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
+          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
+          <p class="editable-slot text-xs text-slate-300">input text here</p>
+        </div>
+
+        <!-- Integrante 05 -->
+        <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelCrimson transition-colors space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono font-bold text-miguelCrimson">INTEGRANTE #05</span>
+            <span class="w-2 h-2 rounded-full bg-miguelCrimson"></span>
+          </div>
+          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
+          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
+          <p class="editable-slot text-xs text-slate-300">input text here</p>
+        </div>
+      </div>
+
+      <!-- Footer Info inside Team Section -->
+      <div class="relative z-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-miguelCrimson"></span>
+          <span>SLOW PARKER 2099 — Flyer Técnico Digital • Pronto para GitHub Pages</span>
+        </div>
+        <span class="editable-slot">input text here</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

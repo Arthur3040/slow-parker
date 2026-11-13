@@ -1,0 +1,51 @@
+/* Minimalist Spider-Man 2099 / Miguel O'Hara Digital Flyer Styles */
+body {
+  background-color: #F8FAFC;
+  color: #0F172A;
+  overflow-x: hidden;
+}
+.dark body {
+  background-color: #070B19;
+  color: #F1F5F9;
+}
+.cyber-web-bg {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 23, 68, 0.12) 1px, transparent 0),
+    linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px, 56px 56px, 56px 56px;
+}
+/* Comic Book Halftone & Burst Styling */
+.halftone-dots {
+  background-image: radial-gradient(rgba(255, 23, 68, 0.18) 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+}
+.comic-shadow-crimson {
+  box-shadow: 4px 4px 0px #FF1744;
+}
+.comic-shadow-cyan {
+  box-shadow: 4px 4px 0px #00F0FF;
+}
+.comic-text-stroke {
+  text-shadow: 2px 2px 0px #070B19, -1px -1px 0px #070B19, 1px -1px 0px #070B19, -1px 1px 0px #070B19;
+}
+.editable-slot {
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+}
+.edit-mode-active .editable-slot {
+  outline: 1.5px dashed #FF1744;
+  background-color: rgba(255, 23, 68, 0.08);
+  padding: 0.2rem 0.45rem;
+  cursor: text;
+}
+.edit-mode-active .editable-slot:focus {
+  outline: 2px solid #00F0FF;
+  background-color: rgba(13, 21, 45, 0.95);
+  color: #FFFFFF;
+}
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
