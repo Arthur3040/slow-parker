@@ -69,11 +69,6 @@
 
       <!-- Interactive Flyer Controls -->
       <div class="flex items-center gap-2 no-print">
-        <button id="toggleEditBtn" type="button" class="text-xs font-medium px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-miguelCrimson dark:hover:border-miguelCrimson text-slate-700 dark:text-slate-200 flex items-center gap-1.5 transition-all" title="Editar todos os campos 'input text here'">
-          <span id="editDot" class="w-2 h-2 rounded-full bg-slate-400"></span>
-          <span id="editBtnLabel">Sabrina carpenter é grande fã do Slow parker</span>
-        </button>
-
         <button id="toggleThemeBtn" type="button" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Alternar tema">
           <svg id="sunIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"></circle>
@@ -101,12 +96,6 @@
       <a href="#equipe" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-miguelCrimson">Integrantes da Equipe (5)</a>
     </div>
   </header>
-
-  <!-- Edit Mode Notification Banner -->
-  <div id="editBanner" class="hidden bg-miguelCrimson text-white text-xs py-2 px-4 text-center no-print">
-    <span>Modo Edição Ativo: Clique em qualquer espaço <strong>"input text here"</strong> para digitar o conteúdo diretamente no flyer.</span>
-    <button id="resetTextBtn" type="button" class="ml-3 underline font-semibold hover:text-miguelYellow">Restaurar "input text here"</button>
-  </div>
 
   <!-- MAIN DIGITAL FLYER CONTAINER -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-14">
@@ -146,27 +135,26 @@
             </p>
           </div>
 
-          <!-- Primary Presentation Slot ("input text here") -->
+          <!-- Primary Presentation Slot (Sabrina Carpenter Humor) -->
           <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-[#070B19]/90 border-l-4 border-miguelCrimson space-y-1.5">
             <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-miguelCrimson dark:text-miguelCyan block">
               // APRESENTAÇÃO DO PROJETO (EVENTO DO CÂNONE)
             </span>
-            <p class="editable-slot text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed">input text here</p>
+            <p class="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Conhecido oficialmente em todo o Aranhaverso como o <strong>herói favorito da Sabrina Carpenter</strong> — porque ele pode até subir na corda no ritmo de um bicho-preguiça, mas entrega mais carisma, charme e torque em 2099 do que qualquer outro Homem-Aranha! ☕💋🕷️
+            </p>
           </div>
 
-          <!-- 3 Concept Pillars with "input text here" -->
+          <!-- 3 Concept Pillars (Structure preserved, placeholder texts removed) -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-[#070B19]/80 border border-slate-200 dark:border-slate-800">
-              <span class="text-xs font-mono font-bold text-miguelCrimson uppercase block mb-1">01 • Rope Climbing</span>
-              <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+              <span class="text-xs font-mono font-bold text-miguelCrimson uppercase block">01 • Rope Climbing</span>
             </div>
             <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-[#070B19]/80 border border-slate-200 dark:border-slate-800">
-              <span class="text-xs font-mono font-bold text-slothMoss uppercase block mb-1">02 • Bio-Preguiça</span>
-              <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+              <span class="text-xs font-mono font-bold text-slothMoss uppercase block">02 • Bio-Preguiça</span>
             </div>
             <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-[#070B19]/80 border border-slate-200 dark:border-slate-800">
-              <span class="text-xs font-mono font-bold text-miguelCyan uppercase block mb-1">03 • Miguel O'Hara</span>
-              <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
+              <span class="text-xs font-mono font-bold text-miguelCyan uppercase block">03 • Miguel O'Hara</span>
             </div>
           </div>
 
@@ -251,16 +239,16 @@
             </div>
 
             <!-- Comic Caption Box -->
-            <div class="relative z-10 mt-3 p-3 rounded-xl bg-[#0D152D] border border-miguelCyan/40 text-xs">
-              <span class="font-mono font-bold text-miguelYellow uppercase block">LEGENDA DO QUADRINHO:</span>
-              <p class="editable-slot text-slate-200 mt-0.5">input text here</p>
+            <div class="relative z-10 mt-3 p-3 rounded-xl bg-[#0D152D] border border-miguelCyan/40 text-xs flex items-center justify-between">
+              <span class="font-mono font-bold text-miguelYellow uppercase">STATUS DA MISSÃO:</span>
+              <span class="font-mono text-miguelCyan">ESCALADA CANÔNICA ATIVA</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. COMIC BOOK ONOMATOPEIA & SPECIAL PHRASES SECTION (INSTEAD OF SIMULATORS) -->
+    <!-- 2. COMIC BOOK ONOMATOPEIA & SPECIAL PHRASES SECTION -->
     <section id="onomatopeias" class="space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
@@ -269,7 +257,6 @@
             Onomatopeias & Frases Especiais do Slow Parker
           </h2>
         </div>
-        <p class="editable-slot text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md">input text here</p>
       </div>
 
       <!-- 3 Comic Panels with Custom SVG Onomatopoeia Art -->
@@ -279,7 +266,6 @@
         <div class="relative rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-slate-900 dark:border-miguelCrimson p-6 comic-shadow-crimson overflow-hidden flex flex-col justify-between">
           <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
           <div class="relative z-10 space-y-4">
-            <!-- SVG Comic Burst Onomatopoeia -->
             <div class="h-32 flex items-center justify-center">
               <svg class="w-full h-full max-w-[250px]" viewBox="0 0 260 110">
                 <polygon points="10,55 42,20 75,32 115,6 148,28 195,10 212,42 252,52 215,78 232,104 175,92 135,108 102,88 48,102 58,72" fill="#FACC15" stroke="#070B19" stroke-width="3.5"/>
@@ -291,7 +277,6 @@
                 "Subir na corda a 0,01 km/h não é atraso... é um Evento Canônico!"
               </p>
             </div>
-            <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
           </div>
           <div class="relative z-10 mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between text-[11px] font-mono text-miguelCrimson">
             <span>GARRAS 2099</span>
@@ -303,7 +288,6 @@
         <div class="relative rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-slate-900 dark:border-miguelCyan p-6 comic-shadow-cyan overflow-hidden flex flex-col justify-between">
           <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
           <div class="relative z-10 space-y-4">
-            <!-- SVG Comic Burst Onomatopoeia -->
             <div class="h-32 flex items-center justify-center">
               <svg class="w-full h-full max-w-[250px]" viewBox="0 0 260 110">
                 <polygon points="15,30 65,12 95,30 140,8 175,28 240,15 222,55 250,85 188,82 155,105 115,82 60,102 42,70" fill="#00F0FF" stroke="#070B19" stroke-width="3.5"/>
@@ -315,7 +299,6 @@
                 "Sem curto no multiverso! Resistores de 47 Ω 100% Anti-Chamas em ação!"
               </p>
             </div>
-            <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
           </div>
           <div class="relative z-10 mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between text-[11px] font-mono text-miguelCyan">
             <span>BANCO PARALELO</span>
@@ -327,7 +310,6 @@
         <div class="relative rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-slate-900 dark:border-miguelCrimson p-6 comic-shadow-crimson overflow-hidden flex flex-col justify-between">
           <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
           <div class="relative z-10 space-y-4">
-            <!-- SVG Comic Burst Onomatopoeia -->
             <div class="h-32 flex items-center justify-center">
               <svg class="w-full h-full max-w-[250px]" viewBox="0 0 260 110">
                 <polygon points="8,50 48,14 90,26 130,6 170,26 218,12 248,48 220,76 238,102 180,90 132,106 88,88 32,100 44,68" fill="#FF1744" stroke="#070B19" stroke-width="3.5"/>
@@ -339,7 +321,6 @@
                 "Redução 20 dentes para 40 dentes: devagar na corda, mas com força aracnídea!"
               </p>
             </div>
-            <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300">input text here</p>
           </div>
           <div class="relative z-10 mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between text-[11px] font-mono text-miguelYellow">
             <span>MOTOR AMARELO 6V</span>
@@ -379,9 +360,9 @@
               Tensão de alimentação principal do barramento elétrico para acionamento do conjunto motriz.
             </p>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
-            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas Adicionais:</span>
-            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono uppercase text-slate-400">
+            <span>BARRAMENTO DC</span>
+            <span class="text-miguelCrimson font-bold">± 8V NOMINAL</span>
           </div>
         </div>
 
@@ -404,9 +385,9 @@
               </li>
             </ul>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
-            <span class="text-[10px] font-mono uppercase text-slate-400 block">Observações do Circuito:</span>
-            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono uppercase text-slate-400">
+            <span>DISSIPAÇÃO SEGURA</span>
+            <span class="text-miguelCyan font-bold">4×150Ω // 4×47Ω</span>
           </div>
         </div>
 
@@ -422,9 +403,9 @@
               Motor DC amarelo de 6V acoplado ao trem de engrenagens para tração dos membros na corda.
             </p>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
-            <span class="text-[10px] font-mono uppercase text-slate-400 block">Detalhes de Acionamento:</span>
-            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono uppercase text-slate-400">
+            <span>MOTORIZAÇÃO</span>
+            <span class="text-miguelYellow font-bold">6V DC</span>
           </div>
         </div>
 
@@ -442,9 +423,9 @@
               <li>• Espessura: <strong>5 mm</strong></li>
             </ul>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
-            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas da Engrenagem Maior:</span>
-            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono uppercase text-slate-400">
+            <span>COROA</span>
+            <span class="text-miguelCyan font-bold">Ø 53 MM × 5 MM</span>
           </div>
         </div>
 
@@ -462,9 +443,9 @@
               <li>• Espessura: <strong>5 mm</strong></li>
             </ul>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
-            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas da Engrenagem do Motor:</span>
-            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono uppercase text-slate-400">
+            <span>PINHÃO DO MOTOR</span>
+            <span class="text-miguelCyan font-bold">Ø 27,60 MM × 5 MM</span>
           </div>
         </div>
 
@@ -482,16 +463,16 @@
               <li>• Largura: <strong>5 cm</strong></li>
             </ul>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
-            <span class="text-[10px] font-mono uppercase text-slate-400 block">Notas de Construção do Chassi:</span>
-            <p class="editable-slot text-xs text-slate-600 dark:text-slate-300 mt-0.5">input text here</p>
+          <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono uppercase text-slate-400">
+            <span>CHASSI COMPACTO</span>
+            <span class="text-slothMoss font-bold">140 × 80 × 50 MM</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- 4. BEFORE & AFTER GALLERY (ANTES: FOTOS REAIS ENVIADAS | DEPOIS: ESPAÇOS PARA O ROBÔ DECORADO) -->
+    <!-- 4. BEFORE & AFTER GALLERY (ANTES: FOTOS REAIS | DEPOIS: PRÉ-SETADO PARA assets/depois-01.jpg, depois-02.jpg, depois-03.jpg) -->
     <section id="antes-depois" class="space-y-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
@@ -539,11 +520,10 @@
                 ANTES • ELETRÔNICA
               </span>
             </div>
-            <div class="p-4 space-y-1.5">
+            <div class="p-4">
               <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
                 Banco de Resistores (4× 150 Ω + 4× 47 Ω Anti-Chamas)
               </h4>
-              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
             </div>
           </div>
 
@@ -559,11 +539,10 @@
                 ANTES • TRANSMISSÃO INTERNA
               </span>
             </div>
-            <div class="p-4 space-y-1.5">
+            <div class="p-4">
               <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
                 Trem de Engrenagens (40 Dentes / 53 mm & 20 Dentes)
               </h4>
-              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
             </div>
           </div>
 
@@ -579,11 +558,10 @@
                 ANTES • ALINHAMENTO DE EIXOS
               </span>
             </div>
-            <div class="p-4 space-y-1.5">
+            <div class="p-4">
               <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
                 Acoplamento do Motor 6V e Eixos Passantes
               </h4>
-              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
             </div>
           </div>
 
@@ -599,11 +577,10 @@
                 ANTES • CORPO 14×8×5 CM
               </span>
             </div>
-            <div class="p-4 space-y-1.5">
+            <div class="p-4">
               <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
                 Vista Lateral do Corpo (14 cm × 8 cm × 5 cm)
               </h4>
-              <p class="editable-slot text-xs text-slate-500 dark:text-slate-400">input text here</p>
             </div>
           </div>
 
@@ -622,15 +599,14 @@
               </div>
               <div class="p-5 flex flex-col justify-between">
                 <div class="space-y-2">
-                  <span class="text-xs font-mono font-bold text-miguelCrimson uppercase">Resumo da Fase "Antes"</span>
+                  <span class="text-xs font-mono font-bold text-miguelCrimson uppercase">Estrutura Base</span>
                   <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">
                     Protótipo Funcional Pré-Customização 2099
                   </h4>
-                  <p class="editable-slot text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">input text here</p>
                 </div>
                 <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
                   <span>CHASSI BASE PRONTO</span>
-                  <span>PRÓXIMO PASSO: TRAJE 2099</span>
+                  <span>TRAJE 2099</span>
                 </div>
               </div>
             </div>
@@ -638,89 +614,100 @@
         </div>
       </div>
 
-      <!-- DEPOIS BLOCK: Dedicated Slots for Decorated Robot Photos -->
+      <!-- DEPOIS BLOCK: Pre-wired to assets/depois-01.jpg, assets/depois-02.jpg, assets/depois-03.jpg -->
       <div id="blockDepois" class="space-y-4 pt-6">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <div class="flex items-center gap-3">
             <span class="font-comic text-xl px-3 py-0.5 rounded bg-miguelCrimson text-white">FASE 02: DEPOIS!</span>
             <h3 class="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-              Espaço Reservado: Fotos do Robô Decorado (Slow Parker / Miguel O'Hara 2099)
+              Robô Decorado (Slow Parker / Miguel O'Hara 2099)
             </h3>
           </div>
-          <span class="text-xs font-mono text-miguelCyan">Clique para pré-visualizar suas fotos do "Depois" ou substitua na pasta assets/</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Depois Slot 1 -->
-          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-dashed border-miguelCrimson/60 p-4 flex flex-col justify-between">
-            <div class="relative aspect-[4/3] rounded-xl bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center p-4 text-center overflow-hidden">
-              <img id="afterPreview1" alt="Preview Depois 1" class="hidden w-full h-full object-cover rounded-lg" />
-              <div id="afterPlaceholder1" class="space-y-2">
+          <!-- Depois Slot 1: Pre-configured for assets/depois-01.jpg -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-miguelCrimson/60 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="relative aspect-[4/3] bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center overflow-hidden">
+              <img
+                id="afterPreview1"
+                src="assets/depois-01.jpg"
+                alt="Slow Parker 2099 Decorado - Foto 01"
+                class="w-full h-full object-cover"
+                onload="this.classList.remove('hidden'); document.getElementById('afterFallback1').classList.add('hidden');"
+                onerror="this.classList.add('hidden'); document.getElementById('afterFallback1').classList.remove('hidden');"
+              />
+              <div id="afterFallback1" class="hidden p-4 text-center space-y-2">
                 <span class="font-comic text-2xl text-miguelCrimson block">POW-2099!!</span>
-                <p class="text-xs font-mono font-semibold text-slate-700 dark:text-slate-200">
-                  [ FOTO DEPOIS 01 — ROBÔ DECORADO FRENTE ]
-                </p>
-                <p class="text-[11px] text-slate-400">Arquivo sugerido: <code>assets/depois-01.jpg</code></p>
-                <label class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-miguelCrimson/15 text-miguelCrimson border border-miguelCrimson/40 text-xs font-semibold cursor-pointer hover:bg-miguelCrimson hover:text-white transition-colors no-print">
-                  Testar Foto Local
-                  <input type="file" accept="image/*" data-target="1" class="after-file-input hidden" />
-                </label>
+                <p class="text-xs font-mono text-slate-400"><code>assets/depois-01.jpg</code></p>
               </div>
+              <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-miguelCrimson text-white shadow">
+                DEPOIS 01 • VISUAL 2099
+              </span>
             </div>
-            <div class="pt-3 space-y-1">
-              <span class="text-[11px] font-mono font-bold text-miguelCrimson uppercase">Depois 01 • Visual Completo</span>
-              <p class="editable-slot text-xs text-slate-600 dark:text-slate-300">input text here</p>
+            <div class="p-4">
+              <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                Depois 01 • Visual Completo
+              </h4>
             </div>
           </div>
 
-          <!-- Depois Slot 2 -->
-          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-dashed border-miguelCyan/60 p-4 flex flex-col justify-between">
-            <div class="relative aspect-[4/3] rounded-xl bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center p-4 text-center overflow-hidden">
-              <img id="afterPreview2" alt="Preview Depois 2" class="hidden w-full h-full object-cover rounded-lg" />
-              <div id="afterPlaceholder2" class="space-y-2">
+          <!-- Depois Slot 2: Pre-configured for assets/depois-02.jpg -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-miguelCyan/60 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="relative aspect-[4/3] bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center overflow-hidden">
+              <img
+                id="afterPreview2"
+                src="assets/depois-02.jpg"
+                alt="Slow Parker 2099 Decorado - Foto 02"
+                class="w-full h-full object-cover"
+                onload="this.classList.remove('hidden'); document.getElementById('afterFallback2').classList.add('hidden');"
+                onerror="this.classList.add('hidden'); document.getElementById('afterFallback2').classList.remove('hidden');"
+              />
+              <div id="afterFallback2" class="hidden p-4 text-center space-y-2">
                 <span class="font-comic text-2xl text-miguelCyan block">THWIP-GARRAS!!</span>
-                <p class="text-xs font-mono font-semibold text-slate-700 dark:text-slate-200">
-                  [ FOTO DEPOIS 02 — DETALHE TRAJE & GARRAS ]
-                </p>
-                <p class="text-[11px] text-slate-400">Arquivo sugerido: <code>assets/depois-02.jpg</code></p>
-                <label class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-miguelCyan/15 text-miguelCyan border border-miguelCyan/40 text-xs font-semibold cursor-pointer hover:bg-miguelCyan hover:text-miguelDark transition-colors no-print">
-                  Testar Foto Local
-                  <input type="file" accept="image/*" data-target="2" class="after-file-input hidden" />
-                </label>
+                <p class="text-xs font-mono text-slate-400"><code>assets/depois-02.jpg</code></p>
               </div>
+              <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-miguelBlue text-white shadow">
+                DEPOIS 02 • TRAJE & GARRAS
+              </span>
             </div>
-            <div class="pt-3 space-y-1">
-              <span class="text-[11px] font-mono font-bold text-miguelCyan uppercase">Depois 02 • Pintura & Fantasia</span>
-              <p class="editable-slot text-xs text-slate-600 dark:text-slate-300">input text here</p>
+            <div class="p-4">
+              <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                Depois 02 • Pintura & Fantasia
+              </h4>
             </div>
           </div>
 
-          <!-- Depois Slot 3 -->
-          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border-2 border-dashed border-miguelYellow/60 p-4 flex flex-col justify-between">
-            <div class="relative aspect-[4/3] rounded-xl bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center p-4 text-center overflow-hidden">
-              <img id="afterPreview3" alt="Preview Depois 3" class="hidden w-full h-full object-cover rounded-lg" />
-              <div id="afterPlaceholder3" class="space-y-2">
+          <!-- Depois Slot 3: Pre-configured for assets/depois-03.jpg -->
+          <div class="rounded-2xl bg-white dark:bg-[#0D152D] border border-slate-200 dark:border-miguelYellow/60 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="relative aspect-[4/3] bg-slate-100 dark:bg-[#070B19] flex flex-col items-center justify-center overflow-hidden">
+              <img
+                id="afterPreview3"
+                src="assets/depois-03.jpg"
+                alt="Slow Parker 2099 Decorado - Foto 03"
+                class="w-full h-full object-cover"
+                onload="this.classList.remove('hidden'); document.getElementById('afterFallback3').classList.add('hidden');"
+                onerror="this.classList.add('hidden'); document.getElementById('afterFallback3').classList.remove('hidden');"
+              />
+              <div id="afterFallback3" class="hidden p-4 text-center space-y-2">
                 <span class="font-comic text-2xl text-miguelYellow block">CLIMB-2099!!</span>
-                <p class="text-xs font-mono font-semibold text-slate-700 dark:text-slate-200">
-                  [ FOTO DEPOIS 03 — SLOW PARKER NA CORDA ]
-                </p>
-                <p class="text-[11px] text-slate-400">Arquivo sugerido: <code>assets/depois-03.jpg</code></p>
-                <label class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-miguelYellow/15 text-miguelYellow border border-miguelYellow/40 text-xs font-semibold cursor-pointer hover:bg-miguelYellow hover:text-miguelDark transition-colors no-print">
-                  Testar Foto Local
-                  <input type="file" accept="image/*" data-target="3" class="after-file-input hidden" />
-                </label>
+                <p class="text-xs font-mono text-slate-400"><code>assets/depois-03.jpg</code></p>
               </div>
+              <span class="absolute top-2.5 left-2.5 text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded bg-miguelYellow text-miguelDark shadow">
+                DEPOIS 03 • NA CORDA
+              </span>
             </div>
-            <div class="pt-3 space-y-1">
-              <span class="text-[11px] font-mono font-bold text-miguelYellow uppercase">Depois 03 • Escalando a Corda</span>
-              <p class="editable-slot text-xs text-slate-600 dark:text-slate-300">input text here</p>
+            <div class="p-4">
+              <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white">
+                Depois 03 • Escalando a Corda
+              </h4>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. TEAM SECTION: SPACE FOR 5 MEMBERS (5 INTEGRANTES) -->
+    <!-- 5. TEAM SECTION: 5 INTEGRANTES PREENCHIDOS -->
     <section id="equipe" class="rounded-3xl bg-[#0D152D] text-white border-2 border-miguelCrimson/50 p-6 sm:p-10 space-y-8 relative overflow-hidden">
       <div class="halftone-dots absolute inset-0 pointer-events-none"></div>
 
@@ -736,61 +723,51 @@
         </span>
       </div>
 
-      <!-- 5 Member Cards with "input text here" -->
+      <!-- 5 Member Cards with Official Team Names -->
       <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <!-- Integrante 01 -->
         <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelCrimson transition-colors space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono font-bold text-miguelCrimson">Kauan Borges da Silva #01</span>
+            <span class="text-[11px] font-mono font-bold text-miguelCrimson">INTEGRANTE #01</span>
             <span class="w-2 h-2 rounded-full bg-miguelCrimson"></span>
           </div>
-          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
-          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
-          <p class="editable-slot text-xs text-slate-300">input text here</p>
+          <p class="font-display font-bold text-base text-white">Kauan Borges da Silva</p>
         </div>
 
         <!-- Integrante 02 -->
         <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelCyan transition-colors space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono font-bold text-miguelCyan">Murilo Schuler Gava #02</span>
+            <span class="text-[11px] font-mono font-bold text-miguelCyan">INTEGRANTE #02</span>
             <span class="w-2 h-2 rounded-full bg-miguelCyan"></span>
           </div>
-          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
-          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
-          <p class="editable-slot text-xs text-slate-300">input text here</p>
+          <p class="font-display font-bold text-base text-white">Murilo Schuler Gava</p>
         </div>
 
         <!-- Integrante 03 -->
         <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelYellow transition-colors space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono font-bold text-miguelYellow">Pâmela Zago Tiwata #03</span>
+            <span class="text-[11px] font-mono font-bold text-miguelYellow">INTEGRANTE #03</span>
             <span class="w-2 h-2 rounded-full bg-miguelYellow"></span>
           </div>
-          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
-          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
-          <p class="editable-slot text-xs text-slate-300">input text here</p>
+          <p class="font-display font-bold text-base text-white">Pâmela Zago Tiwata</p>
         </div>
 
         <!-- Integrante 04 -->
         <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-slothMoss transition-colors space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono font-bold text-slothMoss">Mario Protasiewytch Jr #04</span>
+            <span class="text-[11px] font-mono font-bold text-slothMoss">INTEGRANTE #04</span>
             <span class="w-2 h-2 rounded-full bg-slothMoss"></span>
           </div>
-          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
-          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
-          <p class="editable-slot text-xs text-slate-300">input text here</p>
+          <p class="font-display font-bold text-base text-white">Mario Protasiewytch Jr</p>
         </div>
 
         <!-- Integrante 05 -->
         <div class="p-4 rounded-2xl bg-[#070B19]/90 border border-slate-800 hover:border-miguelCrimson transition-colors space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono font-bold text-miguelCrimson">Arthur Dal Bem Nunes #05</span>
+            <span class="text-[11px] font-mono font-bold text-miguelCrimson">INTEGRANTE #05</span>
             <span class="w-2 h-2 rounded-full bg-miguelCrimson"></span>
           </div>
-          <p class="editable-slot font-display font-bold text-base text-white">input text here</p>
-          <span class="text-[10px] font-mono uppercase text-slate-400 block">Função / Papel:</span>
-          <p class="editable-slot text-xs text-slate-300">input text here</p>
+          <p class="font-display font-bold text-base text-white">Arthur Dal Bem Nunes</p>
         </div>
       </div>
 
@@ -798,9 +775,9 @@
       <div class="relative z-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-miguelCrimson"></span>
-          <span>SLOW PARKER 2099 — Flyer Técnico Digital • Pronto para GitHub Pages</span>
+          <span>SLOW PARKER 2099 — Flyer Técnico Digital • GitHub Pages</span>
         </div>
-        <span class="editable-slot">input text here</span>
+        <span class="font-mono text-miguelCyan">EARTH-928 // PROJETO ROBÓTICA</span>
       </div>
     </section>
 

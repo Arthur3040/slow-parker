@@ -33,40 +33,7 @@
         });
       }
 
-      // 3. Inline "input text here" Edit Mode Toggle
-      const toggleEditBtn = document.getElementById('toggleEditBtn');
-      const editBanner = document.getElementById('editBanner');
-      const editDot = document.getElementById('editDot');
-      const editBtnLabel = document.getElementById('editBtnLabel');
-      const resetTextBtn = document.getElementById('resetTextBtn');
-      const editableSlots = document.querySelectorAll('.editable-slot');
-      let editMode = false;
-
-      if (toggleEditBtn) {
-        toggleEditBtn.addEventListener('click', function () {
-          editMode = !editMode;
-          document.body.classList.toggle('edit-mode-active', editMode);
-          editBanner.classList.toggle('hidden', !editMode);
-          editDot.className = editMode
-            ? 'w-2 h-2 rounded-full bg-miguelCrimson animate-ping'
-            : 'w-2 h-2 rounded-full bg-slate-400';
-          editBtnLabel.textContent = editMode ? 'Concluir Edição' : 'Editar "input text here"';
-
-          editableSlots.forEach(function (slot) {
-            slot.setAttribute('contenteditable', editMode ? 'true' : 'false');
-          });
-        });
-      }
-
-      if (resetTextBtn) {
-        resetTextBtn.addEventListener('click', function () {
-          editableSlots.forEach(function (slot) {
-            slot.textContent = 'input text here';
-          });
-        });
-      }
-
-      // 4. Print / Save Flyer Button
+      // 3. Print / Save Flyer Button
       const printFlyerBtn = document.getElementById('printFlyerBtn');
       if (printFlyerBtn) {
         printFlyerBtn.addEventListener('click', function () {
@@ -74,7 +41,7 @@
         });
       }
 
-      // 5. Before / After Gallery Filter Tabs
+      // 4. Before / After Gallery Filter Tabs
       const stageTabs = document.querySelectorAll('.stage-tab');
       const blockAntes = document.getElementById('blockAntes');
       const blockDepois = document.getElementById('blockDepois');
@@ -97,27 +64,6 @@
             blockAntes.classList.add('hidden');
             blockDepois.classList.remove('hidden');
           }
-        });
-      });
-
-      // 6. Local Image Preview Loader for "Depois" Slots
-      const afterInputs = document.querySelectorAll('.after-file-input');
-      afterInputs.forEach(function (input) {
-        input.addEventListener('change', function (e) {
-          const file = e.target.files && e.target.files[0];
-          const targetId = input.getAttribute('data-target');
-          if (!file || !targetId) return;
-          const reader = new FileReader();
-          reader.onload = function (ev) {
-            const img = document.getElementById('afterPreview' + targetId);
-            const ph = document.getElementById('afterPlaceholder' + targetId);
-            if (img && ph) {
-              img.src = ev.target.result;
-              img.classList.remove('hidden');
-              ph.classList.add('hidden');
-            }
-          };
-          reader.readAsDataURL(file);
         });
       });
     })();
